@@ -1,0 +1,38 @@
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$f492jmk1E2xq2c/I$elZGLscgp4p8sAlQ2N4ol9i08UzBRSwWb5pSkdM66.PkhDZBG4MxK7wV8kvPQdfyE2c8gLOaj4bC.hshhBZTH/
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname leaf2
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Management0
+   ip address 172.23.0.10/16
+!
+no ip routing
+!
+ip route 0.0.0.0/0 172.23.0.1
+!
+end
